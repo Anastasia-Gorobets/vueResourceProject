@@ -1,7 +1,7 @@
 <template>
   <base-card>
     <h2>Add Resource</h2>
-    <form>
+    <form @submit.prevent="submitData">
       <div class="form-control">
         <label for="title">Title</label>
         <input id="title" name="title" type="text" ref="titleInput">
@@ -18,7 +18,7 @@
       </div>
 
       <div class="form-control">
-        <base-button @click="submitData" type="submit">Add resource</base-button>
+        <base-button  type="submit">Add resource</base-button>
       </div>
 
 
@@ -26,21 +26,52 @@
     </form>
   </base-card>
 
+  <base-dialog title="Fill all fields" v-if="showErrors" @close="closeDialog">
+
+    <template #default>
+      <p>Invalid data</p>
+    </template>
+
+    <template #actions>
+      <base-button @click="closeDialog">OK</base-button>
+    </template>
+
+  </base-dialog>
+
 </template>
 
 <script>
 
+import BaseButton from "../UI/BaseButton";
 export default {
   name: "AddResource",
+  components: {BaseButton},
   inject:['addResource'],
+  data(){
+    return{
+      showErrors : false
+    }
+  },
   methods:{
+
+    closeDialog(){
+      this.showErrors = false;
+    },
     submitData(){
 
       const title = this.$refs.titleInput.value;
       const desc = this.$refs.descInput.value;
       const link = this.$refs.linkInput.value;
 
-      this.addResource(title, desc, link);
+      if(title.trim() === '' || desc.trim() === '' || link.trim() === ''){
+        this.showErrors = true;
+        return;
+      }else{
+        console.log('ddd');
+        this.addResource(title, desc, link);
+        this.showErrors = false;
+      }
+
 
     }
   }

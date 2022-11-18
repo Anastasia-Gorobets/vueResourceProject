@@ -26,6 +26,7 @@ export default {
     return{
       resources:this.storedResources,
       addResource:this.addResource,
+      removeResource:this.removeResource,
     }
   },
 
@@ -47,6 +48,14 @@ export default {
 
 
   methods:{
+
+    removeResource(resId){
+      console.log('removeResource');
+      //this.storedResources = this.storedResources.filter(resource => resource.id !== resId);
+
+      const resIndex = this.storedResources.findIndex(resource => resource.id === resId);
+      this.storedResources.splice(resIndex,1);
+    },
 
     addResource(title, desc, link){
 

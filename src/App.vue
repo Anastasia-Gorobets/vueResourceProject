@@ -1,5 +1,5 @@
 <template>
-  <the-header :title="headerTitle"></the-header>
+  <the-header title="Header"></the-header>
   <the-resources></the-resources>
 </template>
 
