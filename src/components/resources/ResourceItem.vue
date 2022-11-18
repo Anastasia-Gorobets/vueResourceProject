@@ -4,9 +4,8 @@
     <base-card>
       <header>
         <h3>{{title}}</h3>
-        <button>Delete</button>
+        <base-button mode="flat" type="button">Delete</base-button>
       </header>
-
 
     <p>{{description}}</p>
 
@@ -20,10 +19,9 @@
 </template>
 
 <script>
-import BaseCard from "../UI/BaseCard";
 export default {
   name: "ResourceItem",
-  components: {BaseCard},
+  components: {},
   props:['id','link','title','description']
 }
 </script>

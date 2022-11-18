@@ -1,33 +1,19 @@
 <template>
   <the-header :title="headerTitle"></the-header>
-  <stored-resources :resources="storedResources"></stored-resources>
+  <the-resources></the-resources>
 </template>
 
 <script>
-import  StoredResources from './components/resources/StoredResources';
+
 import  TheHeader from './components/layouts/TheHeader';
+import  TheResources from './components/resources/TheResources';
 
 export default {
   components:{
-    StoredResources,
-    TheHeader
+    TheHeader,
+    TheResources
   },
   name: "App",
-  data(){
-    return{
-      headerTitle:'Header',
-      storedResources:[
-        {
-          id:'1', title:'Official Guiade', description:'Some text about vue', link:'vuejs.org'
-
-        },
-        {
-          id:'2', title:'Official google', description:'Some text about google', link:'google.com'
-
-        }
-      ]
-    }
-  }
 }
 </script>
 
@@ -45,6 +31,11 @@ html {
 
 body {
   margin: 0;
+}
+
+h2{
+  margin: auto;
+  max-width: 40rem;
 }
 
 </style>

@@ -4,8 +4,11 @@ import App from './App';
 
 var app = createApp(App);
 
-app.mount('#app');
 
 import  BaseCard from './components/UI/BaseCard';
+import  BaseButton from './components/UI/BaseButton';
 
 app.component('base-card',BaseCard);
+app.component('base-button',BaseButton);
+
+app.mount('#app');

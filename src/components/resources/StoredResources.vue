@@ -1,4 +1,5 @@
 <template>
+  <h2>Stored Resources</h2>
   <ul>
     <resource-item  v-for="res in resources" :key="res.id"  :description="res.description" :id="res.id" :link="res.link" :title="res.title"></resource-item>
   </ul>
@@ -8,8 +9,14 @@
 import  ResourceItem from './ResourceItem';
 
 export default {
-  props:['resources'],
+  inject:['resources'],
+  /*props:['resources'],*/
   name: "StoredResources",
+ /* data(){
+    return{
+      currentResources:this.resources;
+    }
+  },*/
   components:{
     ResourceItem
   },
@@ -23,4 +30,5 @@ ul {
   margin: auto;
   max-width: 40rem;
 }
+
 </style>
